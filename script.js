@@ -17,16 +17,17 @@ document.getElementById('generate-btn').addEventListener('click', () => {
     let group = "";
 
     // Assign to treatment or control group
-    if (randomNum <= 0.6) {
+    if (randomNum <= 0.6) { // 60% chance
       group = "Treatment Group (60%)";
     } else {
-      // Further randomize within the control group
-      if (randomNum <= 0.73) {
-        group = "Control Group 1";
-      } else if (randomNum <= 0.86) {
-        group = "Control Group 2";
-      } else {
-        group = "Control Group 3";
+      // Assign to sub-control groups (40% split equally into 3 parts)
+      const controlNum = randomNum; // Use the same number for further subdivision
+      if (controlNum <= 0.7333) { // 60% + 13.33% = 73.33%
+        group = "Control Group 1 (13.33%)";
+      } else if (controlNum <= 0.8666) { // 73.33% + 13.33% = 86.66%
+        group = "Control Group 2 (13.33%)";
+      } else { // Remaining 13.33%
+        group = "Control Group 3 (13.33%)";
       }
     }
 
