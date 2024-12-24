@@ -130,6 +130,17 @@ body {
     font-size: 14px;
     color: #333;
   }
+
+  /* Introductory Text */
+  .intro {
+    text-align: left; /* Overrides the container's center alignment */
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    padding: 0 10px;
+  }
+  
   
   /* Responsive Adjustments */
   @media (max-width: 600px) {

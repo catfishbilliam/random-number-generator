@@ -13,6 +13,20 @@
   <div class="container">
     <h1>Random Number Generator</h1>
 
+    <div class="intro">
+        <p>
+          This tool generates random numbers and assigns participants into groups for research studies by assigning a number between 0 and 1. 
+          If assigned a number from 0–0.6, the participant is placed in the treatment group. If assigned a number greater than 0.6–1, the participant is placed in one of the three control groups.
+        </p>
+        <p>
+          Participants are divided into a <strong>treatment group (60%)</strong> and 
+          <strong>three control subgroups (13.33% each)</strong>.  
+          After generating group assignments, you can enter a list of participant IDs 
+          to match them with their group assignments and download the results as a CSV file.
+        </p>
+      </div>
+      
+
     <!-- Input number of participants -->
     <p>Enter the number of participants:</p>
     <input type="number" id="participant-count" min="1" value="1" />
