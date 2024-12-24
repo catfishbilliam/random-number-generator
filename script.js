@@ -12,23 +12,43 @@ document.getElementById('generate-btn').addEventListener('click', () => {
   // Get the number of participants
   const participantCount = parseInt(document.getElementById('participant-count').value, 10);
 
+  // Calculate quotas
+  const treatmentCount = Math.floor(participantCount * 0.6); // 60%
+  const controlCount = participantCount - treatmentCount;    // 40%
+  const controlSubCount = Math.floor(controlCount / 3);      // Divide remaining 40% into 3 equal parts
+  const extra = controlCount % 3; // Handle uneven splits
+
+  let control1Count = controlSubCount;
+  let control2Count = controlSubCount;
+  let control3Count = controlSubCount;
+
+  // Distribute any leftover participants due to rounding
+  if (extra > 0) control1Count++;
+  if (extra > 1) control2Count++;
+
+  // Counters for each group
+  let treatmentAssigned = 0;
+  let control1Assigned = 0;
+  let control2Assigned = 0;
+  let control3Assigned = 0;
+
   // Generate random numbers and assign groups
   for (let i = 0; i < participantCount; i++) {
     const randomNum = Math.random(); // Generate random number between 0 and 1
     let group = "";
 
-    // Assign to treatment or control group
-    if (randomNum <= 0.6) { // 60% chance
+    if (treatmentAssigned < treatmentCount) {
       group = "Treatment Group (60%)";
+      treatmentAssigned++;
+    } else if (control1Assigned < control1Count) {
+      group = "Control Group 1 - Cats vs. Dogs (13.33%)";
+      control1Assigned++;
+    } else if (control2Assigned < control2Count) {
+      group = "Control Group 2 - Best Music Genre (13.33%)";
+      control2Assigned++;
     } else {
-      // Assign to sub-control groups (40% split equally into 3 parts)
-      if (randomNum <= 0.7333) { // 60% + 13.33% = 73.33%
-        group = "Control Group 1 (13.33%)";
-      } else if (randomNum <= 0.8666) { // 73.33% + 13.33% = 86.66%
-        group = "Control Group 2 (13.33%)";
-      } else { // Remaining 13.33%
-        group = "Control Group 3 (13.33%)";
-      }
+      group = "Control Group 3 - Best Airline (13.33%)";
+      control3Assigned++;
     }
 
     // Display result
