@@ -151,7 +151,10 @@ button {
   .container {
       padding: 15px; /* Smaller padding inside the container */
       max-width: 90%; /* Keep width responsive */
-      margin: 10px 0; /* Ensure gap between top and bottom */
+      margin: 10px auto; /* Ensure gap between top and bottom */
+      display: flex;
+      flex-direction: column; /* Stack elements vertically */
+      align-items: center; /* Center-align content */
   }
 
   h1 {
@@ -167,12 +170,23 @@ button {
       padding: 10px 20px;
   }
 
-  input[type="number"], textarea {
+  /* Fix input fields */
+  input[type="number"], 
+  textarea {
       font-size: 14px;
       padding: 10px;
+      width: 100%; /* Make input fields fill container */
+      box-sizing: border-box; /* Include padding and border in width calculation */
   }
 
+  textarea {
+      height: 80px; /* Adjust height for smaller screens */
+  }
+
+  /* Fix results container */
   #results-container {
       max-height: 200px; /* Smaller results container */
+      width: 100%; /* Ensure results fit within container */
   }
 }
+
