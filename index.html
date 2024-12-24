@@ -5,16 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Random Number Generator</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Cedarville+Cursive&family=Inter:ital,opsz,wght@0,14..32,700;1,14..32,700&family=Lunasima:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
     <h1>Random Number Generator</h1>
+
+    <!-- Input number of participants -->
     <p>Enter the number of participants:</p>
     <input type="number" id="participant-count" min="1" value="1" />
+
+    <!-- Generate button -->
     <button id="generate-btn">Generate</button>
     <h2>Results</h2>
     <div id="results-container"></div>
+
+    <!-- Input for participant IDs -->
+    <h3>Enter Participant IDs (comma-separated):</h3>
+    <textarea id="participant-ids" rows="4" placeholder="Paste ID's here..."></textarea>
+    
+    <!-- Buttons Container -->
+<div class="buttons-container">
+    <button id="match-btn">Match IDs</button>
     <button id="download-btn">Download CSV</button>
+  </div>  
   </div>
   <script src="script.js"></script>
 </body>
