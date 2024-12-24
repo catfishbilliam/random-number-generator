@@ -1,151 +1,178 @@
 /* General Body Styling */
 body {
-    font-family: 'Afacad Flux', serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    color: #333;
-  }
-  
-  /* Container */
-  .container {
-    padding: 25px 35px;
-    width: 90%;
-    max-width: 700px;
-    border-radius: 12px;
-    background-color: #ffffff;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Headings */
-  h1 {
-    font-size: 30px;
-    margin-bottom: 15px;
-    font-weight: bold;
-    color: #4a4a4a;
-  }
-  
-  h2, h3 {
-    margin-bottom: 15px;
-    color: #555;
-  }
-  
-  /* Input Fields */
-  input[type="number"], textarea {
-    padding: 12px;
-    font-size: 16px;
-    margin: 10px 0;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Textarea Styling */
-  textarea {
-    resize: none;
-    height: 100px;
-  }
-  
-  /* Placeholder Style */
-  textarea::placeholder {
-    color: #aaa;
-    font-style: italic;
-  }
-  
-  /* Buttons Container (New Layout for Buttons) */
-  .buttons-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px; /* Adds space between buttons */
-    margin-top: 15px;
-    flex-wrap: wrap; /* Ensures buttons stack if the screen is small */
-  }
-  
-  /* Buttons */
-  button {
-    padding: 12px 25px;
-    font-family: inherit;
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Primary Button */
-  #generate-btn {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  #generate-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Match Button */
-  #match-btn {
-    background-color: #ffc107;
-    color: black;
-  }
-  
-  #match-btn:hover {
-    background-color: #e0a800;
-  }
-  
-  /* Download Button */
-  #download-btn {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  #download-btn:hover {
-    background-color: #218838;
-  }
-  
-  /* Results Container */
-  #results-container {
-    margin-top: 20px;
-    max-height: 300px;
-    overflow-y: auto;
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Result Paragraphs */
-  #results-container p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #333;
+  font-family: 'Afacad Flux', serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: #333;
+}
+
+/* Container */
+.container {
+  padding: 20px 30px;
+  width: 90%;
+  max-width: 650px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.85); /* Slight transparency */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px); /* Glass effect */
+}
+
+/* Headings */
+h1 {
+  font-size: 2em; /* Scales with viewport */
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #4a4a4a;
+}
+
+h2, h3 {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+/* Input Fields */
+input[type="number"], textarea {
+  padding: 12px;
+  font-size: 16px;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Textarea Styling */
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+/* Placeholder Style */
+textarea::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Buttons Container */
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+button {
+  padding: 12px 25px;
+  font-family: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Primary Button */
+#generate-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+#generate-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Match Button */
+#match-btn {
+  background-color: #ffc107;
+  color: black;
+}
+
+#match-btn:hover {
+  background-color: #e0a800;
+}
+
+/* Download Button */
+#download-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+#download-btn:hover {
+  background-color: #218838;
+}
+
+/* Results Container */
+#results-container {
+  margin-top: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  border-radius: 8px;
+  background-color: rgba(249, 249, 249, 0.9); /* Slight transparency */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Result Paragraphs */
+#results-container p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Introductory Text */
+.intro {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  padding: 0 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  body {
+      padding: 10px 0; /* Add spacing at the top and bottom */
   }
 
-  /* Introductory Text */
-  .intro {
-    text-align: left; /* Overrides the container's center alignment */
-    margin-bottom: 20px;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #555;
-    padding: 0 10px;
+  .container {
+      padding: 15px; /* Smaller padding inside the container */
+      max-width: 90%; /* Keep width responsive */
+      margin: 10px 0; /* Ensure gap between top and bottom */
   }
-  
-  
-  /* Responsive Adjustments */
-  @media (max-width: 600px) {
-    .buttons-container {
-      flex-direction: column; /* Stack buttons vertically on smaller screens */
-    }
+
+  h1 {
+      font-size: 1.5em; /* Smaller heading for mobile */
   }
-  
+
+  .buttons-container {
+      flex-direction: column; /* Stack buttons vertically */
+  }
+
+  button {
+      font-size: 16px;
+      padding: 10px 20px;
+  }
+
+  input[type="number"], textarea {
+      font-size: 14px;
+      padding: 10px;
+  }
+
+  #results-container {
+      max-height: 200px; /* Smaller results container */
+  }
+}
