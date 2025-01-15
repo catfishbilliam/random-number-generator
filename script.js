@@ -12,21 +12,10 @@ document.getElementById('generate-btn').addEventListener('click', () => {
   // Get the number of participants
   const participantCount = parseInt(document.getElementById('participant-count').value, 10);
 
-  // Calculate quotas
-  const treatmentCount = Math.floor(participantCount * 0.6); // 60%
-  const controlCount = participantCount - treatmentCount;    // 40%
-  const controlSubCount = Math.floor(controlCount / 3);      // Divide remaining 40% into 3 equal parts
-  const extra = controlCount % 3; // Handle uneven splits
+  // Quotas for control subgroups
+  const controlQuota = Math.floor(participantCount * 0.4);    // 40% for control groups
+  const controlSubQuota = Math.floor(controlQuota / 3);       // Divide 40% into 3 subgroups
 
-  let control1Count = controlSubCount;
-  let control2Count = controlSubCount;
-  let control3Count = controlSubCount;
-
-  // Distribute any leftover participants due to rounding
-  if (extra > 0) control1Count++;
-  if (extra > 1) control2Count++;
-
-  // Counters for each group
   let treatmentAssigned = 0;
   let control1Assigned = 0;
   let control2Assigned = 0;
@@ -37,17 +26,18 @@ document.getElementById('generate-btn').addEventListener('click', () => {
     const randomNum = Math.random(); // Generate random number between 0 and 1
     let group = "";
 
-    if (treatmentAssigned < treatmentCount) {
+    // Assign based on random number thresholds
+    if (randomNum <= 0.6) {
       group = "Treatment Group (60%)";
       treatmentAssigned++;
-    } else if (control1Assigned < control1Count) {
-      group = "Control Group 1 - Cats vs. Dogs (13.33%)";
+    } else if (randomNum > 0.6 && randomNum <= 0.7333 && control1Assigned < controlSubQuota) {
+      group = "Control Group 1 - Best Genres of Music (13.33%)";
       control1Assigned++;
-    } else if (control2Assigned < control2Count) {
-      group = "Control Group 2 - Best Music Genre (13.33%)";
+    } else if (randomNum > 0.7333 && randomNum <= 0.8666 && control2Assigned < controlSubQuota) {
+      group = "Control Group 2 - Favorite Airline (13.33%)";
       control2Assigned++;
     } else {
-      group = "Control Group 3 - Best Airline (13.33%)";
+      group = "Control Group 3 - Cats vs. Dogs (13.33%)";
       control3Assigned++;
     }
 
@@ -89,8 +79,11 @@ document.getElementById('match-btn').addEventListener('click', () => {
 // Event listener for downloading CSV
 document.getElementById('download-btn').addEventListener('click', () => {
   let csvContent = "data:text/csv;charset=utf-8,";
+
+  // Add headers
   csvContent += "Participant ID,Random Number,Group Assignment\n";
 
+  // Add data rows
   matchedRecords.forEach(row => {
     csvContent += `${row.id},${row.number},${row.group}\n`;
   });
