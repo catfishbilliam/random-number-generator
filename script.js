@@ -12,14 +12,12 @@ document.getElementById('generate-btn').addEventListener('click', () => {
   // Get the number of participants
   const participantCount = parseInt(document.getElementById('participant-count').value, 10);
 
-  // Quotas for control subgroups
-  const controlQuota = Math.floor(participantCount * 0.4);    // 40% for control groups
-  const controlSubQuota = Math.floor(controlQuota / 3);       // Divide 40% into 3 subgroups
+  // Calculate quotas
+  const treatmentQuota = Math.floor(participantCount * 0.6); // 60% for treatment
+  const controlQuota = participantCount - treatmentQuota;    // Remaining 40% for control
 
   let treatmentAssigned = 0;
-  let control1Assigned = 0;
-  let control2Assigned = 0;
-  let control3Assigned = 0;
+  let controlAssigned = 0;
 
   // Generate random numbers and assign groups
   for (let i = 0; i < participantCount; i++) {
@@ -27,18 +25,12 @@ document.getElementById('generate-btn').addEventListener('click', () => {
     let group = "";
 
     // Assign based on random number thresholds
-    if (randomNum <= 0.6) {
+    if (randomNum <= 0.6 && treatmentAssigned < treatmentQuota) {
       group = "Treatment Group (60%)";
       treatmentAssigned++;
-    } else if (randomNum > 0.6 && randomNum <= 0.7333 && control1Assigned < controlSubQuota) {
-      group = "Control Group 1 - Best Genres of Music (13.33%)";
-      control1Assigned++;
-    } else if (randomNum > 0.7333 && randomNum <= 0.8666 && control2Assigned < controlSubQuota) {
-      group = "Control Group 2 - Favorite Airline (13.33%)";
-      control2Assigned++;
     } else {
-      group = "Control Group 3 - Cats vs. Dogs (13.33%)";
-      control3Assigned++;
+      group = "Control Group (40%)";
+      controlAssigned++;
     }
 
     // Display result
@@ -92,7 +84,8 @@ document.getElementById('download-btn').addEventListener('click', () => {
   const encodedUri = encodeURI(csvContent);
   const link = document.createElement('a');
   link.setAttribute('href', encodedUri);
-  link.setAttribute('download', 'matched_group_assignments.csv');
+  const downloadFilename = "matched_group_assignments.csv";
+  link.setAttribute('download', downloadFilename);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
